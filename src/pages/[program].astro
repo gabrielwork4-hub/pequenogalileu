@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+import { programs } from '../data/site';
+export function getStaticPaths() { return Object.keys(programs).map((program) => ({ params: { program } })); }
+const key = Astro.params.program as keyof typeof programs;
+const program = programs[key];
+if (!program) return Astro.redirect('/404');
+---
+<BaseLayout title={`${program.title} | O Pequeno Galileu`} description={`${program.title} no Rio Pequeno: ${program.description}`}><div class="container"><Breadcrumbs items={[{label:program.title}]} /></div><section class="page-hero"><div class="container"><p class="eyebrow">{program.age.toUpperCase()}</p><h1>{program.title}: descobertas que começam com acolhimento.</h1><p>{program.description}</p><a class="button" href="/agendar-visita">Agendar visita</a></div></section><section class="section"><div class="container grid-2"><div><p class="eyebrow">O QUE VIVEMOS</p><h2>Um cotidiano que acompanha as conquistas de cada etapa.</h2><p>As propostas são organizadas para favorecer vínculo, curiosidade, movimento, linguagem e autonomia.</p></div><div class="card"><h3>Destaques da etapa</h3><ul class="feature-list">{program.highlights.map((item) => <li>{item}</li>)}<li>Comunicação próxima com a família.</li><li>Experiências planejadas a partir dos interesses das crianças.</li></ul></div></div></section><Callout title={`Conheça o ${program.title} em uma visita.`} /></BaseLayout>

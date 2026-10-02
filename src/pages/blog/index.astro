@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { posts } from '../../data/site';
+---
+<BaseLayout title="Blog | O Pequeno Galileu" description="Conteúdos sobre primeira infância, adaptação escolar, alimentação, desenvolvimento e vida em família."><div class="container"><Breadcrumbs items={[{label:'Blog'}]} /></div><section class="page-hero"><div class="container"><p class="eyebrow">CADERNO PEDAGÓGICO</p><h1>Reflexões e orientações para acompanhar a infância.</h1><p>Conteúdos preparados para ajudar famílias a compreender os desafios e descobertas dos primeiros anos.</p></div></section><section class="section"><div class="container"><div class="grid-3">{posts.map((post) => <article class="card article-card"><small>{post.category} · {post.minutes} de leitura</small><h2>{post.title}</h2><p>{post.excerpt}</p><a class="read" href={`/blog/${post.slug}`}>Ler artigo →</a></article>)}</div></div></section></BaseLayout>

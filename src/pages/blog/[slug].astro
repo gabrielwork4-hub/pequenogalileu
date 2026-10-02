@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import { posts, site } from '../../data/site';
+export function getStaticPaths() { return posts.map((post) => ({ params: { slug: post.slug }, props: { post } })); }
+const { post } = Astro.props;
+const schema = { '@context':'https://schema.org', '@type':'Article', headline:post.title, description:post.excerpt, datePublished:post.published, dateModified:post.published, inLanguage:'pt-BR', author:{'@type':'Organization', name:site.name}, publisher:{'@type':'Organization',name:site.name,url:site.url}, mainEntityOfPage:new URL(`/blog/${post.slug}`,site.url).toString() };
+---
+<BaseLayout title={`${post.title} | Blog O Pequeno Galileu`} description={post.excerpt} schema={schema}><div class="container"><Breadcrumbs items={[{label:'Blog',href:'/blog'},{label:post.title}]} /></div><article class="article"><p class="eyebrow">{post.category.toUpperCase()}</p><h1>{post.title}</h1><p class="meta">{post.minutes} de leitura</p><div class="article-content"><p>{post.excerpt} Este é um conteúdo inicial de desenvolvimento, que será revisado e expandido pela equipe pedagógica antes da publicação definitiva.</p><h2>O que faz diferença nessa etapa</h2><p>As experiências da primeira infância ganham significado quando a criança é acolhida com previsibilidade, espaço para expressão e relações de confiança. Cada família vive esse processo de forma própria.</p><h2>Uma parceria construída no cotidiano</h2><p>Quando família e escola conversam com clareza, é possível alinhar rotinas, compreender necessidades e construir uma transição mais tranquila. A escuta é parte central desse caminho.</p><h2>Próximos passos</h2><p>Ao visitar uma escola, observe os ambientes, pergunte sobre a rotina e reserve tempo para conhecer quem estará ao lado da criança. Uma escolha informada começa por uma boa conversa.</p></div></article><Callout title="Quer conversar sobre essa fase?" /></BaseLayout>

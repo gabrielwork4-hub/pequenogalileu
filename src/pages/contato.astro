@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Contato | O Pequeno Galileu" description="Entre em contato com o O Pequeno Galileu, escola de educação infantil no Rio Pequeno."><section class="section"><div class="container"><p class="eyebrow">CONTATO</p><h1>Fale com a nossa equipe.</h1><div class="grid-3"><article class="card"><h2>Endereço</h2><p>{site.address}</p></article><article class="card"><h2>Atendimento</h2><p>{site.openingHours}</p></article><article class="card"><h2>Canais</h2><p><a href={`tel:${site.phone.replace(/\D/g,'')}`}>{site.phone}</a><br/><a href={`mailto:${site.email}`}>{site.email}</a></p></article></div></div></section></BaseLayout>

@@ -1,0 +1,12 @@
+---
+import { navigation, site } from '../data/site';
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="utility"><div class="container"><span>{site.city}</span><span>{site.openingHours}</span></div></div>
+  <div class="nav-wrap container">
+    <a class="brand" href="/" aria-label="Página inicial de O Pequeno Galileu"><span class="brand-mark">G</span><span><b>O Pequeno Galileu</b><small>Educação infantil</small></span></a>
+    <nav aria-label="Navegação principal">{navigation.map((item) => <a class:list={[{ active: path === item.href }]} href={item.href}>{item.label}</a>)}</nav>
+    <a class="button compact" href="/agendar-visita">Agendar visita</a>
+  </div>
+</header>

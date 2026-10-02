@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+.env
+reference-colegio-jjr/
+stitch_o_pequeno_galileu_warm_discovery/
+stitch_o_pequeno_galileu_warm_discovery.zip
