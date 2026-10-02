@@ -1,0 +1,15 @@
+/* Superfícies limpas; o vinho aparece como assinatura em pontos de ênfase. */
+:root{--cream:#fcfbfa;--sand:#f7f2f4;--line:#eadfe4;--shadow:0 12px 32px rgba(43,16,32,.07)}
+body{background:var(--cream)}
+.hero{background:radial-gradient(circle at 86% 10%,rgba(116,28,59,.15) 0,rgba(116,28,59,.04) 18%,transparent 42%),#fff}
+.page-hero{background:linear-gradient(120deg,#fff 0%,#fff 64%,#f8eff2 100%)}
+.section.sand{background:#f8f4f5}
+.card{border:1px solid rgba(116,28,59,.08);box-shadow:0 10px 28px rgba(43,16,32,.055)}
+.hero-art,.mock-image{background:linear-gradient(145deg,#e9c8d5 0%,#a74969 48%,#4b1230 100%)}
+.trust-chip{border:1px solid rgba(116,28,59,.12);box-shadow:none}
+.highlights-strip{background:linear-gradient(108deg,#2b1020 0%,#741c3b 52%,#461029 100%)}
+.enrollment-band{background:radial-gradient(circle at 8% 85%,rgba(255,255,255,.13),transparent 27%),linear-gradient(120deg,#3d0d24 0%,#741c3b 52%,#a22e58 100%)}
+.enrollment-year{color:#f3dce5}
+.enrollment-band .eyebrow{color:#f6d7a1}
+.button{box-shadow:0 10px 24px rgba(116,28,59,.18)}
+.button.secondary{box-shadow:none}
