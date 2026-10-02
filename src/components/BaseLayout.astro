@@ -6,7 +6,11 @@ import WhatsAppButton from './WhatsAppButton.astro';
 import { site } from '../data/site';
 interface Props { title: string; description: string; image?: string; noindex?: boolean; schema?: Record<string, unknown> }
 const { title, description, image = '/og-default.svg', noindex = false, schema } = Astro.props;
-const canonical = new URL(Astro.url.pathname, site.url).toString();
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const previewBuild = base !== '/';
+const basePath = base.slice(0, -1);
+const canonicalPath = previewBuild && Astro.url.pathname.startsWith(basePath) ? Astro.url.pathname.slice(basePath.length) || '/' : Astro.url.pathname;
+const canonical = new URL(canonicalPath, site.url).toString();
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -15,7 +19,7 @@ const canonical = new URL(Astro.url.pathname, site.url).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
+    <meta name="robots" content={noindex || previewBuild ? 'noindex,follow' : 'index,follow'} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={site.locale} />
     <meta property="og:site_name" content={site.name} />

@@ -2,5 +2,6 @@
 import { site } from '../data/site';
 interface Props { title?: string; text?: string }
 const { title = 'Venha nos conhecer de perto', text = 'Uma conversa tranquila e uma visita ao espaço ajudam a família a encontrar a escola certa.' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
-<section class="callout"><div class="container callout-inner"><div><p class="eyebrow">PORTAS ABERTAS</p><h2>{title}</h2><p>{text}</p></div><div class="cta-stack"><a class="button" href="/agendar-visita">Agendar uma visita</a><a class="button secondary" href={`https://wa.me/${site.whatsapp}`} rel="noopener noreferrer" target="_blank">Falar pelo WhatsApp</a></div></div></section>
+<section class="callout"><div class="container callout-inner"><div><p class="eyebrow">PORTAS ABERTAS</p><h2>{title}</h2><p>{text}</p></div><div class="cta-stack"><a class="button" href={`${base}agendar-visita`}>Agendar uma visita</a><a class="button secondary" href={`https://wa.me/${site.whatsapp}`} rel="noopener noreferrer" target="_blank">Falar pelo WhatsApp</a></div></div></section>
