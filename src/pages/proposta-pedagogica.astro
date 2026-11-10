@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const stages = [
+  { href: 'bercario', title: 'Berçário', text: 'Vínculos, interações e exploração em experiências adequadas aos bebês.' },
+  { href: 'maternal', title: 'Maternal', text: 'Brincadeiras, linguagem, movimento e convivência no cotidiano do grupo.' },
+  { href: 'pre-escola', title: 'Pré-escola', text: 'Projetos, investigação, expressão e participação das crianças.' },
+];
+---
+<BaseLayout title="Proposta pedagógica | O Pequeno Galileu" description="Entenda como a proposta pedagógica do Galileu se traduz em experiências, observação e diálogo com as famílias.">
+  <div class="container"><Breadcrumbs items={[{label:'A escola',href:'/a-escola'},{label:'Proposta pedagógica'}]} /></div>
+  <section class="page-hero"><div class="container narrow"><p class="eyebrow">Educação infantil</p><h1>Nossa proposta pedagógica</h1><p>Uma proposta ganha sentido quando a família pode ver como ela orienta o dia das crianças. Aqui apresentamos os temas que ajudam a conhecer o trabalho da escola; os exemplos e registros próprios serão acrescentados após o briefing com a coordenação.</p></div></section>
+  <section class="section"><div class="container content-grid"><div><h2>Da intenção à experiência</h2><p>Brincar, interagir e explorar são formas de conhecer o mundo na educação infantil. Para mostrar como isso acontece no Galileu, cada etapa terá um exemplo real: o interesse das crianças, os materiais escolhidos, a participação da equipe e o que foi observado.</p></div><div class="visit-panel"><h3>O que vamos documentar</h3><ul class="question-list"><li>Um registro de experiência por etapa.</li><li>O papel da equipe no planejamento e na observação.</li><li>Como os responsáveis acompanham o percurso da criança.</li></ul></div></div></section>
+  <section class="section sand"><div class="container"><div class="section-header"><h2>A proposta em cada etapa</h2><p>Conheça as perguntas e experiências que fazem sentido para a idade da criança.</p></div><div class="grid-3">{stages.map((stage) => <article class="card program-card"><h3>{stage.title}</h3><p>{stage.text}</p><a href={`${base}${stage.href}`}>Conhecer {stage.title.toLowerCase()}</a></article>)}</div></div></section>
+  <section class="section"><div class="container narrow"><h2>Acompanhamento e parceria</h2><p>As famílias precisam saber como a escola planeja, observa e compartilha o desenvolvimento. A coordenação vai detalhar aqui os registros e encontros que usa de fato, incluindo como escuta dúvidas e informações trazidas pelos responsáveis.</p><p><a class="text-link" href={`${base}a-escola`}>Conheça a escola e sua equipe</a></p></div></section>
+  <Callout title="Converse sobre a proposta com a equipe." />
+</BaseLayout>

@@ -6,10 +6,11 @@ const currentPath = path.startsWith(base) ? `/${path.slice(base.length)}` : path
 const withBase = (href: string) => `${base}${href.replace(/^\//, '')}`;
 ---
 <header class="site-header">
-  <div class="utility"><div class="container"><span>{site.city}</span><span>{site.openingHours}</span></div></div>
+  <div class="utility"><div class="container"><span>{site.city}</span><span>{site.preview ? 'Prévia com informações provisórias' : site.openingHours}</span></div></div>
   <div class="nav-wrap container">
-    <a class="brand" href={base} aria-label="Página inicial de O Pequeno Galileu"><span class="brand-mark">G</span><span><b>O Pequeno Galileu</b><small>Educação infantil</small></span></a>
-    <nav aria-label="Navegação principal">{navigation.map((item) => <a class:list={[{ active: currentPath === item.href }]} href={withBase(item.href)}>{item.label}</a>)}</nav>
+    <a class="brand" href={base} aria-label="Página inicial de O Pequeno Galileu"><img class="brand-logo" src={`${base}images/logo-galileu-transparente.png`} alt="" /><span><b>O Pequeno Galileu</b><small>Educação infantil</small></span></a>
+    <nav class="desktop-nav" aria-label="Navegação principal">{navigation.map((item) => <a class:list={[{ active: currentPath === item.href }]} href={withBase(item.href)}>{item.label}</a>)}</nav>
+    <details class="mobile-menu"><summary>Menu</summary><nav aria-label="Navegação móvel">{navigation.map((item) => <a class:list={[{ active: currentPath === item.href }]} href={withBase(item.href)}>{item.label}</a>)}<a href={withBase('/proposta-pedagogica')}>Proposta pedagógica</a><a href={withBase('/duvidas-frequentes')}>Perguntas frequentes</a><a href={withBase('/agendar-visita')}>Agendar visita</a></nav></details>
     <a class="button compact" href={withBase('/agendar-visita')}>Agendar visita</a>
   </div>
 </header>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout title="Perguntas frequentes | O Pequeno Galileu" description="Respostas sobre etapas, adaptação, rotina, visita e matrículas no Galileu.">
+  <div class="container"><Breadcrumbs items={[{label:'Perguntas frequentes'}]} /></div>
+  <section class="page-hero"><div class="container narrow"><p class="eyebrow">Antes da visita</p><h1>Perguntas frequentes</h1><p>Comece pelas respostas abaixo e converse com a equipe sobre o que é importante para sua família. Idades, períodos e condições serão atualizados quando a escola confirmar a ficha oficial.</p></div></section>
+  <section class="section"><div class="container faq-list">
+    <details><summary>Quais etapas a escola atende?</summary><p>O Galileu apresenta berçário, maternal e pré-escola. As faixas etárias mostradas nesta prévia são provisórias. <a href={`${base}bercario`}>Berçário</a>, <a href={`${base}maternal`}>maternal</a> e <a href={`${base}pre-escola`}>pré-escola</a> têm páginas próprias.</p></details>
+    <details><summary>Como funciona a adaptação?</summary><p>A equipe explicará o processo usado em cada grupo e como conversa com a família durante os primeiros dias. <a href={`${base}rotina-e-cuidados`}>Veja os temas da rotina e dos cuidados.</a></p></details>
+    <details><summary>Como são organizadas alimentação e descanso?</summary><p>Os procedimentos dependem da etapa e das informações individuais da criança. A escola vai confirmar sua prática antes de detalhá-la aqui. <a href={`${base}rotina-e-cuidados`}>Entenda o que perguntar sobre o cotidiano.</a></p></details>
+    <details><summary>Quais períodos e vagas estão disponíveis?</summary><p>A disponibilidade pode mudar. Consulte a equipe para receber as condições atuais da etapa e do período de interesse. <a href={`${base}matriculas`}>Veja o processo de matrícula.</a></p></details>
+    <details><summary>Posso conhecer a escola antes da matrícula?</summary><p>Você pode solicitar uma conversa e uma visita. A data e o horário ficam definidos após a confirmação da equipe. <a href={`${base}agendar-visita`}>Veja como pedir uma visita.</a></p></details>
+    <details><summary>Como recebo valores e a lista de documentos?</summary><p>A secretaria poderá explicar as condições vigentes depois de entender a etapa e o período desejados. <a href={`${base}matriculas`}>Conheça os passos da matrícula.</a></p></details>
+  </div></section>
+  <Callout title="Ainda tem uma pergunta?" text="Uma conversa com a equipe ajuda a esclarecer o que importa para sua família." />
+</BaseLayout>

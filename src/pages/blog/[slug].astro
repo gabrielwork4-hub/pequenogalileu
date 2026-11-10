@@ -2,9 +2,24 @@
 import BaseLayout from '../../components/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
-import { posts, site } from '../../data/site';
+import { posts } from '../../data/site';
 export function getStaticPaths() { return posts.map((post) => ({ params: { slug: post.slug }, props: { post } })); }
 const { post } = Astro.props;
-const schema = { '@context':'https://schema.org', '@type':'Article', headline:post.title, description:post.excerpt, datePublished:post.published, dateModified:post.published, inLanguage:'pt-BR', author:{'@type':'Organization', name:site.name}, publisher:{'@type':'Organization',name:site.name,url:site.url}, mainEntityOfPage:new URL(`/blog/${post.slug}`,site.url).toString() };
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const content: Record<string, { heading: string; text: string }[]> = {
+  'adaptacao-escolar-como-acolher-os-primeiros-dias': [
+    { heading: 'Antes do primeiro dia', text: 'Ao visitar a escola, pergunte quem receberá a criança, como a família pode compartilhar hábitos importantes e como serão combinados os primeiros encontros. Informações sobre a rotina da criança ajudam a equipe a compreender seu contexto.' },
+    { heading: 'Durante as primeiras semanas', text: 'Combine um canal para trocar observações com a equipe. Pergunte o que a criança explorou, com quem interagiu e quais momentos pediram mais apoio. Uma preocupação específica deve ser conversada com as pessoas que acompanham a criança.' },
+    { heading: 'Perguntas para a visita', text: 'Como vocês conhecem os hábitos da criança antes do início? Quem acompanha a chegada? Como família e escola conversam ao longo do dia? O que muda quando a criança precisa de um ajuste na rotina?' },
+  ],
+  'introducao-alimentar-com-respeito': [
+    { heading: 'Converse sobre o procedimento da escola', text: 'Pergunte quem acompanha as refeições, como a equipe recebe orientações individuais e como comunica o que aconteceu durante o dia. O processo próprio do Galileu ainda será confirmado com a escola.' },
+    { heading: 'Orientações individuais', text: 'Questões sobre idade, consistência dos alimentos, alergias ou tratamento precisam ser tratadas pelos profissionais que acompanham a criança. O texto final desta página depende de revisão nutricional ou médica.' },
+  ],
+  'seguranca-na-educacao-infantil': [
+    { heading: 'O que perguntar na visita', text: 'Peça à equipe que explique como organiza a chegada e a saída das crianças, quem acompanha os grupos nos espaços e como se comunica com a família diante de uma situação importante.' },
+    { heading: 'Conheça os ambientes', text: 'Observe os espaços da etapa da criança e peça informações sobre os procedimentos vigentes. O artigo final depende de verificação da direção e de responsável competente por segurança.' },
+  ],
+};
 ---
-<BaseLayout title={`${post.title} | Blog O Pequeno Galileu`} description={post.excerpt} schema={schema}><div class="container"><Breadcrumbs items={[{label:'Blog',href:'/blog'},{label:post.title}]} /></div><article class="article"><p class="eyebrow">{post.category.toUpperCase()}</p><h1>{post.title}</h1><p class="meta">{post.minutes} de leitura</p><div class="article-content"><p>{post.excerpt} Este é um conteúdo inicial de desenvolvimento, que será revisado e expandido pela equipe pedagógica antes da publicação definitiva.</p><h2>O que faz diferença nessa etapa</h2><p>As experiências da primeira infância ganham significado quando a criança é acolhida com previsibilidade, espaço para expressão e relações de confiança. Cada família vive esse processo de forma própria.</p><h2>Uma parceria construída no cotidiano</h2><p>Quando família e escola conversam com clareza, é possível alinhar rotinas, compreender necessidades e construir uma transição mais tranquila. A escuta é parte central desse caminho.</p><h2>Próximos passos</h2><p>Ao visitar uma escola, observe os ambientes, pergunte sobre a rotina e reserve tempo para conhecer quem estará ao lado da criança. Uma escolha informada começa por uma boa conversa.</p></div></article><Callout title="Quer conversar sobre essa fase?" /></BaseLayout>
+<BaseLayout title={`${post.title} | O Pequeno Galileu`} description={post.excerpt} noindex><div class="container"><Breadcrumbs items={[{label:'Conteúdo para famílias',href:'/blog'},{label:post.title}]} /></div><article class="article"><p class="eyebrow">Rascunho editorial · {post.category}</p><h1>{post.title}</h1><p class="meta">Conteúdo em revisão pela escola. Ainda não é orientação individual.</p><div class="article-content"><p>{post.excerpt}</p>{content[post.slug].map((section) => <section><h2>{section.heading}</h2><p>{section.text}</p></section>)}<h2>Continue a conversa</h2><p>Veja as informações sobre <a href={`${base}rotina-e-cuidados`}>rotina e cuidados</a>, conheça os <a href={`${base}estrutura-e-espacos`}>espaços da escola</a> e prepare suas perguntas para uma visita.</p></div></article><Callout title="Quer conversar sobre essa fase?" /></BaseLayout>

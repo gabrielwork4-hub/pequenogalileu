@@ -20,7 +20,7 @@ const canonical = new URL(canonicalPath, site.url).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content={noindex || previewBuild ? 'noindex,follow' : 'index,follow'} />
+    <meta name="robots" content={noindex || previewBuild || site.preview ? 'noindex,follow' : 'index,follow'} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={site.locale} />
     <meta property="og:site_name" content={site.name} />

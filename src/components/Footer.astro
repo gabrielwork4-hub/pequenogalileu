@@ -5,9 +5,9 @@ const withBase = (href: string) => `${base}${href.replace(/^\//, '')}`;
 ---
 <footer>
   <div class="container footer-grid">
-    <div><a class="brand" href={base}><span class="brand-mark">G</span><span><b>O Pequeno Galileu</b><small>Educação infantil</small></span></a><p>Uma escola para a primeira infância, feita de afeto, escuta e descoberta.</p></div>
-    <div><h2>Navegação</h2><ul>{navigation.map((item) => <li><a href={withBase(item.href)}>{item.label}</a></li>)}<li><a href={withBase('/matriculas')}>Matrículas</a></li></ul></div>
-    <div><h2>Contato</h2><p>{site.address}</p><p><a href={`tel:${site.phone.replace(/\D/g, '')}`}>{site.phone}</a><br/><a href={`mailto:${site.email}`}>{site.email}</a></p></div>
+    <div><a class="brand" href={base} aria-label="Página inicial de O Pequeno Galileu"><img class="brand-logo" src={`${base}images/logo-galileu-transparente.png`} alt="" /><span><b>O Pequeno Galileu</b><small>Educação infantil</small></span></a><p>Uma escola para a primeira infância, feita de afeto, escuta e descoberta.</p></div>
+    <div><h2>Navegação</h2><ul>{navigation.map((item) => <li><a href={withBase(item.href)}>{item.label}</a></li>)}<li><a href={withBase('/proposta-pedagogica')}>Proposta pedagógica</a></li><li><a href={withBase('/duvidas-frequentes')}>Perguntas frequentes</a></li><li><a href={withBase('/blog')}>Conteúdo para famílias</a></li></ul></div>
+    <div><h2>Contato</h2><p>{site.address}</p>{site.contactReady ? <p><a href={`tel:${site.phone.replace(/\D/g, '')}`}>{site.phone}</a><br/><a href={`mailto:${site.email}`}>{site.email}</a></p> : <p>Canais em validação com a escola.</p>}<p><a href={withBase('/contato')}>Endereço e rota</a></p></div>
   </div>
-  <div class="container footer-bottom">© {new Date().getFullYear()} {site.name}. <a href={withBase('/privacidade')}>Privacidade</a> · <a href={withBase('/termos-de-uso')}>Termos</a></div>
+  <div class="container footer-bottom">© {new Date().getFullYear()} {site.name}. Prévia com dados e imagens provisórios. <a href={withBase('/privacidade')}>Privacidade</a> · <a href={withBase('/termos-de-uso')}>Termos</a></div>
 </footer>
