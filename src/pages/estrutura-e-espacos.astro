@@ -4,18 +4,18 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const photos = [
-  { title: 'Um espaço para imaginar', text: 'Mercadinho, feirinha e oficina compõem este ambiente de brincadeira.', image: 'espaco-educacao-galileu.jpg', alt: 'Espaço infantil com mercadinho, feirinha e oficina de faz de conta' },
-  { title: 'Aprender em grupo', text: 'Crianças exploram livros e atividades ao lado dos computadores.', image: 'alunos-computador.jpg', alt: 'Crianças reunidas à mesa com livros, atividades e computadores' },
-  { title: 'Uma sala que inspira descobertas', text: 'Mesas infantis e um mural colorido compõem esta sala de aula.', image: 'sala-aula-mural.jpg', alt: 'Sala de aula infantil com mesas pequenas e mural ilustrado' },
-  { title: 'Leitura, jogos e investigação', text: 'Prateleiras com livros e jogos ficam ao alcance das crianças.', image: 'sala-aula-lousa.jpg', alt: 'Sala de aula com estantes de livros e jogos, lousa digital e tapete' },
-  { title: 'Cores que acolhem', text: 'Outro ângulo de uma sala preparada para atividades em pequenos grupos.', image: 'sala-aula-galileu.jpg', alt: 'Sala colorida com mesas e cadeiras infantis' },
-  { title: 'Um ambiente para aprender', text: 'A sala reúne espaços para atividades e momentos de convivência.', image: 'sala-rosa-galileu.jpg', alt: 'Sala de aula com lousa, mesas infantis e cortinas cor-de-rosa' },
+  { title: 'Um espaço para imaginar', text: 'Mercadinho, feirinha e oficina compõem este ambiente de brincadeira.', image: 'espaco-educacao-galileu.webp', alt: 'Espaço infantil com mercadinho, feirinha e oficina de faz de conta' },
+  { title: 'Aprender em grupo', text: 'Crianças exploram livros e atividades ao lado dos computadores.', image: 'alunos-computador.webp', alt: 'Crianças reunidas à mesa com livros, atividades e computadores' },
+  { title: 'Uma sala que inspira descobertas', text: 'Mesas infantis e um mural colorido compõem esta sala de aula.', image: 'sala-aula-mural.webp', alt: 'Sala de aula infantil com mesas pequenas e mural ilustrado' },
+  { title: 'Leitura, jogos e investigação', text: 'Prateleiras com livros e jogos ficam ao alcance das crianças.', image: 'sala-aula-lousa.webp', alt: 'Sala de aula com estantes de livros e jogos, lousa digital e tapete' },
+  { title: 'Cores que acolhem', text: 'Outro ângulo de uma sala preparada para atividades em pequenos grupos.', image: 'sala-aula-galileu.webp', alt: 'Sala colorida com mesas e cadeiras infantis' },
+  { title: 'Um ambiente para aprender', text: 'A sala reúne espaços para atividades e momentos de convivência.', image: 'sala-rosa-galileu.webp', alt: 'Sala de aula com lousa, mesas infantis e cortinas cor-de-rosa' },
 ];
 ---
 <BaseLayout title="Estrutura e espaços | O Pequeno Galileu" description="Conheça alguns ambientes do Pequeno Galileu por meio de fotos da escola e agende uma visita.">
   <div class="container"><Breadcrumbs items={[{label:'Estrutura e espaços'}]} /></div>
   <section class="page-hero"><div class="container narrow"><p class="eyebrow">Conheça o ambiente</p><h1>Estrutura e espaços da escola</h1><p>Um primeiro olhar para os ambientes do Pequeno Galileu. Na visita, a equipe pode apresentar cada espaço e explicar como ele faz parte do cotidiano das crianças.</p></div></section>
-  <section class="section"><div class="container"><div class="grid-3">{photos.map((photo) => <article class="card"><div class="mock-image" style="margin:-.5rem -.5rem 1.5rem;aspect-ratio:4/3;border-radius:1rem"><img src={`${base}images/escola/${photo.image}`} width="1200" height="900" alt={photo.alt} loading="lazy" /></div><h2>{photo.title}</h2><p>{photo.text}</p></article>)}</div></div></section>
+  <section class="section"><div class="container"><div class="grid-3">{photos.map((photo) => <article class="card"><div class="mock-image" style="margin:-.5rem -.5rem 1.5rem;aspect-ratio:4/3;border-radius:1rem"><img src={`${base}images/escola/${photo.image}`} width="1264" height="948" alt={photo.alt} loading="lazy" decoding="async" /></div><h2>{photo.title}</h2><p>{photo.text}</p></article>)}</div></div></section>
   <section class="section sand"><div class="container content-grid"><div><h2>Conheça os espaços de perto</h2><p>Uma conversa presencial permite observar os ambientes e perguntar como eles são usados na rotina. Conheça também o <a href={`${base}contato`}>endereço e a rota</a>.</p></div><div><h2>Planeje sua visita</h2><p>A equipe pode apresentar a escola e conversar sobre a etapa da sua criança.</p><a class="text-link" href={`${base}agendar-visita`}>Solicitar visita</a></div></div></section>
   <Callout title="Venha conhecer os espaços de perto." text="Agende uma conversa com a equipe do Pequeno Galileu." />
 </BaseLayout>
